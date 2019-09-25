@@ -24,7 +24,7 @@ allprojects {
 **Step 2. 添加项目依赖**
 ``` gradle
 dependencies {
-        implementation 'com.github.SheHuan:NiceDialog:1.2.0'
+        implementation 'com.github.zhpanvip:NiceDialog:2.0.0'
 }
 ```
 **Step 3. 配置、展示dialog**
@@ -43,7 +43,10 @@ NiceDialog.init()
           .setMargin()     //dialog左右两边到屏幕边缘的距离（单位：dp），默认0dp
           .setWidth()     //dialog宽度（单位：dp），默认为屏幕宽度，-1代表WRAP_CONTENT
           .setHeight()     //dialog高度（单位：dp），默认为WRAP_CONTENT
-          .setOutCancel(false)     //点击dialog外是否可取消，默认true
+          .setBackCancelable(true)// 返回键是否可以取消
+          .setCanceledOnTouchOutside(false)     //点击dialog外是否可取消，默认true 
+          .setHeightMatchParent() // 设置DialogView height为match_parent
+          .setWidthMatchParent() // 设置DialogView width为match_parent
           .setAnimStyle(R.style.EnterExitAnimation)     //设置dialog进入、退出的自定义动画；根据设置的Gravity，默认提供了左、上、右、下位置进入退出的动画
           .show(getSupportFragmentManager());     //显示dialog
 ```
@@ -85,6 +88,6 @@ public class ConfirmDialog extends BaseNiceDialog {
 ```java
 ConfirmDialog.newInstance("1")
              .setMargin(60)
-             .setOutCancel(false)
+             .setCanceledOnTouchOutside(false)
              .show(getSupportFragmentManager());
 ```
